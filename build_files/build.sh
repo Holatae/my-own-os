@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux 
+dnf5 install -y tmux
 
 # Use a COPR Example:
 #
@@ -20,5 +20,17 @@ dnf5 install -y tmux
 # dnf5 -y copr disable ublue-os/staging
 
 #### Example for enabling a System Unit File
+
+rm /opt
+mkdir -p /opt
+
+rpm --import https://downloads.1password.com/linux/keys/1password.asc
+sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+
+dnf5 install -y 1password
+
+dnf5 install -y sl
+dnf5 install -y nvim
+dnf5 install -y firefox
 
 systemctl enable podman.socket
