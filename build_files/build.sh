@@ -32,5 +32,6 @@ dnf5 install -y 1password
 dnf5 install -y sl
 dnf5 install -y nvim
 dnf5 install -y firefox
+dnf5 install -y earlyoom
 
 systemctl enable podman.socket
