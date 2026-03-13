@@ -29,6 +29,24 @@ sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://down
 
 dnf5 install -y 1password
 
+groupadd onepassword
+chgrp onepassword /opt/1Password/1Password-BrowserSupport
+chmod g+s /opt/1Password/1Password-BrowserSupport
+install -Dm0644 /opt/1Password/resources/custom_allowed_browsers -t /etc/1password/
+
+# Native messaging manifest för Firefox
+mkdir -p /usr/lib/mozilla/native-messaging-hosts
+cat > /usr/lib/mozilla/native-messaging-hosts/com.1password.1password.json << 'EOF'
+{
+  "name": "com.1password.1password",
+  "description": "1Password desktop integration",
+  "path": "/opt/1Password/1Password-BrowserSupport",
+  "type": "stdio",
+  "allowed_extensions": ["support@1password.com"]
+}
+EOF
+
+
 dnf5 install -y sl
 dnf5 install -y nvim
 dnf5 install -y firefox
