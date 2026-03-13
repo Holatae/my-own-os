@@ -21,6 +21,8 @@ dnf5 install -y tmux
 
 #### Example for enabling a System Unit File
 
+dnf5 install -y dnf-plugins-core
+dnf5 config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 dnf5 install -y brave-browser
 
 rm /opt
