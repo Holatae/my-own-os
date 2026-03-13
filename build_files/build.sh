@@ -42,7 +42,11 @@ cat > /usr/lib/mozilla/native-messaging-hosts/com.1password.1password.json << 'E
   "description": "1Password desktop integration",
   "path": "/opt/1Password/1Password-BrowserSupport",
   "type": "stdio",
-  "allowed_extensions": ["support@1password.com"]
+  "allowed_extensions": [
+    "{d634138d-c276-4fc8-924b-40a0ea21d284}",
+    "d634138d-c276-4fc8-924b-40a0ea21d284",
+    "support@1password.com"
+  ]
 }
 EOF
 
