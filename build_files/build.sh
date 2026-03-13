@@ -21,6 +21,8 @@ dnf5 install -y tmux
 
 #### Example for enabling a System Unit File
 
+dnf5 install -y brave-browser
+
 rm /opt
 mkdir -p /opt
 
@@ -29,7 +31,7 @@ sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://down
 
 dnf5 install -y 1password
 
-groupmod -g 1001 onepassword
+groupmod -g 6001 onepassword
 chgrp onepassword /opt/1Password/1Password-BrowserSupport
 chmod g+s /opt/1Password/1Password-BrowserSupport
 install -Dm0644 /opt/1Password/resources/custom_allowed_browsers -t /etc/1password/
