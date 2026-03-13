@@ -27,6 +27,16 @@ dnf5 install -y dnf-plugins-core
 dnf5 config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 dnf5 install -y brave-browser
 
+mkdir -p /usr/lib/brave-browser/NativeMessagingHosts
+cat > /usr/lib/brave-browser/NativeMessagingHosts/com.1password.1password.json << 'EOF'
+{
+  "name": "com.1password.1password",
+  "description": "1Password desktop integration",
+  "path": "/opt/1Password/1Password-BrowserSupport",
+  "type": "stdio",
+  "allowed_origins": ["chrome-extension://aeblfdkhhhdcdjpifhhbdiojplfjncoa/"]
+}
+EOF
 
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
