@@ -4,6 +4,8 @@ set -ouex pipefail
 
 ### Install packages
 
+rm /opt
+mkdir -p /opt
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # List of rpmfusion packages can be found here:
@@ -25,8 +27,6 @@ dnf5 install -y dnf-plugins-core
 dnf5 config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 dnf5 install -y brave-browser
 
-rm /opt
-mkdir -p /opt
 
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
