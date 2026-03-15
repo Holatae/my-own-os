@@ -78,5 +78,6 @@ dnf5 install -y earlyoom
 ### MullvadVPN
 dnf5 config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
 dnf5 install -y mullvad-vpn
+dnf5 install -y mat2
 
 systemctl enable podman.socket
