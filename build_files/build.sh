@@ -4,6 +4,7 @@ set -ouex pipefail
 
 ### Install packages
 
+# Needs to be done fo make programs that uses opt to install correctry
 rm /opt
 mkdir -p /opt
 # Packages can be installed from any enabled yum repo on the image.
@@ -23,10 +24,12 @@ dnf5 install -y tmux
 
 #### Example for enabling a System Unit File
 
+### Used for installing brave
 dnf5 install -y dnf-plugins-core
 dnf5 config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 dnf5 install -y brave-browser
 
+### is used to make 1password work on brave
 mkdir -p /usr/lib/brave-browser/NativeMessagingHosts
 cat > /usr/lib/brave-browser/NativeMessagingHosts/com.1password.1password.json << 'EOF'
 {
@@ -38,11 +41,13 @@ cat > /usr/lib/brave-browser/NativeMessagingHosts/com.1password.1password.json <
 }
 EOF
 
+# 1password
 rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
 
 dnf5 install -y 1password
 
+### Configuring 1password to work correctry
 groupmod -g 6001 onepassword
 chgrp onepassword /opt/1Password/1Password-BrowserSupport
 chmod g+s /opt/1Password/1Password-BrowserSupport
@@ -69,5 +74,9 @@ dnf5 install -y sl
 dnf5 install -y nvim
 dnf5 install -y firefox
 dnf5 install -y earlyoom
+
+### MullvadVPN
+dnf5 config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
+dnf5 install -y mullvad-vpn
 
 systemctl enable podman.socket
