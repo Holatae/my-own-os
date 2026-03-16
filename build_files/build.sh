@@ -79,5 +79,6 @@ dnf5 install -y earlyoom
 dnf5 config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
 dnf5 install -y mullvad-vpn
 dnf5 install -y mat2
+dnf5 install -y hunspell-sv
 
 systemctl enable podman.socket
