@@ -74,11 +74,15 @@ dnf5 install -y sl
 dnf5 install -y nvim
 dnf5 install -y firefox
 dnf5 install -y earlyoom
+dnf5 install -y htop
 
 ### MullvadVPN
 dnf5 config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
 dnf5 install -y mullvad-vpn
 dnf5 install -y mat2
 dnf5 install -y hunspell-sv
+
+# Tesseract ocr and stuff
+dnf5 install -y ocrmypdf tesseract tesseract-langpack-swe tesseract-langpack-eng
 
 systemctl enable podman.socket
