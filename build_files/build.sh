@@ -84,7 +84,4 @@ dnf5 install -y hunspell-sv
 # Tesseract ocr and stuff
 dnf5 install -y ocrmypdf tesseract tesseract-langpack-swe tesseract-langpack-eng
 
-# terminal-vms
-dnf5 install -y quickemu
-
 systemctl enable podman.socket
