@@ -31,7 +31,7 @@ dnf5 install -y brave-browser
 
 ### is used to make 1password work on brave
 mkdir -p /usr/lib/brave-browser/NativeMessagingHosts
-cat > /usr/lib/brave-browser/NativeMessagingHosts/com.1password.1password.json << 'EOF'
+cat >/usr/lib/brave-browser/NativeMessagingHosts/com.1password.1password.json <<'EOF'
 {
   "name": "com.1password.1password",
   "description": "1Password desktop integration",
@@ -55,7 +55,7 @@ install -Dm0644 /opt/1Password/resources/custom_allowed_browsers -t /etc/1passwo
 
 # Native messaging manifest för Firefox
 mkdir -p /usr/lib/mozilla/native-messaging-hosts
-cat > /usr/lib/mozilla/native-messaging-hosts/com.1password.1password.json << 'EOF'
+cat >/usr/lib/mozilla/native-messaging-hosts/com.1password.1password.json <<'EOF'
 {
   "name": "com.1password.1password",
   "description": "1Password desktop integration",
@@ -68,7 +68,6 @@ cat > /usr/lib/mozilla/native-messaging-hosts/com.1password.1password.json << 'E
   ]
 }
 EOF
-
 
 dnf5 install -y sl
 dnf5 install -y nvim
@@ -84,5 +83,8 @@ dnf5 install -y hunspell-sv
 
 # Tesseract ocr and stuff
 dnf5 install -y ocrmypdf tesseract tesseract-langpack-swe tesseract-langpack-eng
+
+# terminal-vms
+dnf5 install -y quickemu
 
 systemctl enable podman.socket
