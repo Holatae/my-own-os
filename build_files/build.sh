@@ -84,4 +84,7 @@ dnf5 install -y hunspell-sv
 # Tesseract ocr and stuff
 dnf5 install -y ocrmypdf tesseract tesseract-langpack-swe tesseract-langpack-eng
 
+# cockpit
+dnf5 install -y cockpit cockpit-storaged cockpit-files cockpit-machines cockpit-ostree cockpit-selinux cockpit-image-builder cockpit-networkmanager cockpit-ws cockpit-ws-selinux cockpit-podman
+
 systemctl enable podman.socket
