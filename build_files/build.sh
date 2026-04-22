@@ -70,7 +70,6 @@ cat >/usr/lib/mozilla/native-messaging-hosts/com.1password.1password.json <<'EOF
 EOF
 
 dnf5 install -y sl
-dnf5 install -y nvim
 dnf5 install -y firefox
 dnf5 install -y earlyoom
 dnf5 install -y htop
